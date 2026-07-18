@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { IBM_Plex_Sans, Source_Sans_3 } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
 
-const sourceSans3Heading = Source_Sans_3({subsets:['latin'],variable:'--font-heading'});
+const sourceSans3Heading = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,8 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", "font-sans", ibmPlexSans.variable, sourceSans3Heading.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        ibmPlexSans.variable,
+        sourceSans3Heading.variable,
+      )}
+    >
+      <body className="min-h-full flex flex-col">
+        <Toaster position="top-right" richColors />
+        {children}
+      </body>
     </html>
   );
 }
